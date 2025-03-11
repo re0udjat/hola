@@ -1,0 +1,22 @@
+# -- Configure the kube-proxy replacement in Cilium BPF datapath
+# Ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
+kubeProxyReplacement: "true"
+
+# -- Kubernetes service host / port
+k8sServiceHost: "192.168.65.102"
+k8sServicePort: "6443"
+
+# -- Configure the Ingress Controller
+ingressController:
+  # -- Enable support for Ingress Controller
+  # This will automatically set enable-envoy-config as well
+  enabled: true
+  # -- Set cilium Ingress Controller to be the default Ingress Controller
+  # This will let cilium Ingress Cotroller route entries without Ingress Class set
+  default: true
+  # -- Default Ingress Load Balancer mode
+  loadbalancerMode: dedicated
+
+operator:
+  # -- Enable the cilium-operator component (required)
+  replicas: 1

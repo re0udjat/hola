@@ -1,0 +1,86 @@
+# -- Provide a name to substitute for the full names of resourcees
+fullnameOverride: prometheus
+
+# -- Setting to true produces cleaner resource names, but requires a data
+# migration because the name of the Persistent Volume changes => This
+# should be set once on initial installation
+cleanPrometheusOperatorObjectNames: true
+
+# -- Disable default rules for monitoring the cluster
+defaultRules:
+  create: false
+
+#######################
+## GRAFANA COMPONENT ##
+#######################
+# -- Disable Grafana
+grafana:
+  enabled: false
+
+#############################
+## ALERT MANAGER COMPONENT ##
+#############################
+# -- Disable AlertManager
+alertmanager:
+  enabled: false
+
+###################################
+## PROMETHEUS OPERATOR COMPONENT ##
+###################################
+prometheusOperator:
+  # -- Add Config Reloader liveness and readiness probe
+  enableProbe: true
+
+  # -- Resource config for Prometheus Config Reloader
+  resources:
+    requests:
+      cpu: 200m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
+
+##########################
+## PROMETHEUS COMPONENT ##
+##########################
+# -- Prometheus instance
+prometheus:
+  enabled: true
+
+####################################
+## OMPONENTS FOR SCRAPING METRICS ##
+####################################
+# -- Component scraping the kube-api-server
+kubeApiServer:
+  enabled: false
+
+# -- Component scraping the kubelet and kubelet-hosted cAdvisor
+kubelet:
+  enabled: false
+
+# -- Component scraping kube-controller manager
+kubeControllerManager:
+  enabled: false
+
+# -- Component scraping core-dns
+coreDns:
+  enabled: false
+
+# -- Component scraping kube-dns
+kubeDns:
+  enabled: false
+
+# -- Component scraping etcd
+kubeEtcd:
+  enabled: false
+
+# -- Component scraping kube-scheduler
+kubeScheduler:
+  enabled: false
+
+# -- Component scraping kube-proxy
+kubeProxy:
+  enabled: false
+
+# -- Component scarping kube-state-metrics
+kubeStateMetrics:
+  enabled: false
