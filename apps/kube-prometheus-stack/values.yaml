@@ -31,6 +31,10 @@ prometheusOperator:
   # -- Add Config Reloader liveness and readiness probe
   enableProbe: true
 
+  serviceMonitor:
+    # -- Create a ServiceMonitor for Prometheus Operator
+    selfMonitor: true
+
   # -- Resource config for Prometheus Config Reloader
   resources:
     requests:
@@ -45,6 +49,14 @@ prometheusOperator:
 # -- Prometheus instance
 prometheus:
   enabled: true
+
+  serviceMonitor:
+    # -- Create a ServiceMonitor for Prometheus
+    selfMonitor: true
+
+  prometheusSpec:
+    # -- Interval between consecutive scrapes
+    scrapeInterval: 15s
 
 ####################################
 ## OMPONENTS FOR SCRAPING METRICS ##
