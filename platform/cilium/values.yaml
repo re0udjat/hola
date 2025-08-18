@@ -1,0 +1,3 @@
+operator:
+  # -- Number of replicas to run for the cilium-operator deployment
+  replicas: 1
